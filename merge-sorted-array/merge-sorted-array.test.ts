@@ -9,6 +9,7 @@ describe("merge-sorted-array", () => {
     let nums2 = [2, 5, 6];
     let n = 3;
     merge(nums1, m, nums2, n);
+    console.log("RESULT: ", nums1);
     expect(nums1).toEqual([1, 2, 2, 3, 5, 6]);
   });
   test("case 2", () => {
@@ -26,5 +27,14 @@ describe("merge-sorted-array", () => {
     let n = 1;
     merge(nums1, m, nums2, n);
     expect(nums1).toEqual([1]);
+  });
+  test("case 4", () => {
+    let nums1 = [4, 5, 6, 0, 0, 0];
+    let m = 3;
+    let nums2 = [1, 2, 3];
+    let n = 3;
+    merge(nums1, m, nums2, n);
+    console.log("RESULT: ", nums1);
+    expect(nums1).toEqual([1, 2, 3, 4, 5, 6]);
   });
 });
