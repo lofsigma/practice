@@ -19,5 +19,7 @@ export const merge = (
     }
     i++;
   }
-  nums1.splice(i, nums2.slice(j).length, ...nums2.slice(j));
+  nums1.splice(i, n - j, ...nums2.slice(j));
 };
+
+// now how do I do this without a temporary array?
