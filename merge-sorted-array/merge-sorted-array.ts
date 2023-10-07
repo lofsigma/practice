@@ -8,18 +8,15 @@ export const merge = (
   let k = 0;
   let t = [...nums1];
   for (let i = 0; i < m + n; i++) {
-    if (k < m) {
-      if (t[k] > nums2[j]) {
-        nums1[i] = nums2[j];
-        j++;
-      } else {
-        nums1[i] = t[k];
+    if ((k < m && t[k] > nums2[j]) || k >= m) {
+      nums1[i] = nums2[j];
+      j++;
+      if (k >= m) {
         k++;
       }
     } else {
-      nums1[i] = nums2[j];
+      nums1[i] = t[k];
       k++;
-      j++;
     }
   }
 };
