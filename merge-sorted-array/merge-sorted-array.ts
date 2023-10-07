@@ -4,25 +4,18 @@ export const merge = (
   nums2: number[],
   n: number
 ) => {
-  let nums2idx = 0;
-  let temp: number[] = [];
   let j = 0;
-  if (nums2idx >= n) return;
+  if (j >= n) return;
   for (let i = 0; i < nums1.length; i++) {
     if (i >= m) {
-      temp = temp.concat(nums2.slice(nums2idx));
+      nums1.splice(i, nums2.slice(j).length, ...nums2.slice(j));
       break;
     }
-    if (nums1[i] <= nums2[nums2idx]) {
-      temp[i] = nums1[i];
+    if (nums1[i] > nums2[j]) {
+      nums1[i + 1] = nums1[i];
+      nums1[i] = nums2[j];
+      i++;
       j++;
-    } else {
-      temp[j] = nums2[nums2idx];
-      temp[j + 1] = nums1[i];
-      j += 2;
-      nums2idx++;
     }
-    console.log("temp: ", temp);
   }
-  nums1.splice(0, nums1.length, ...temp);
 };
