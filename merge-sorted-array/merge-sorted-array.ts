@@ -8,18 +8,22 @@ export const merge = (
   let j = 0;
   let k = 0;
   let t = [...nums1];
-
-  while (k < m) {
-    if (t[k] > nums2[j]) {
-      nums1[i] = nums2[j];
-      j++;
+  for (; k < m + n; ) {
+    if (k < m) {
+      if (t[k] > nums2[j]) {
+        nums1[i] = nums2[j];
+        j++;
+      } else {
+        nums1[i] = t[k];
+        k++;
+      }
     } else {
-      nums1[i] = t[k];
+      nums1[i] = nums2[j];
       k++;
+      j++;
     }
     i++;
   }
-  nums1.splice(i, n - j, ...nums2.slice(j));
 };
 
 // now how do I do this without a temporary array?
