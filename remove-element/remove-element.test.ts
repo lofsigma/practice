@@ -1,5 +1,6 @@
 import { expect, test, describe } from "bun:test";
 import { removeElement } from "./remove-element";
+import { expectationPrint } from "../helpers/debug";
 
 // CASE 1:
 describe("remove-element", () => {
@@ -11,13 +12,27 @@ describe("remove-element", () => {
 
     expect(k).toEqual(2);
 
-    expect(nums.slice(0, k + 1).sort()).toEqual([2, 2].sort());
+    const result = nums.slice(0, k).sort();
+    const expectation = [2, 2].sort();
+    expectationPrint(result.join(", "), expectation.join(", "));
+    expect(result).toEqual(expectation);
   });
   test("case 2", () => {
     let nums = [0, 1, 2, 2, 3, 0, 4, 2];
     let val = 2;
+
     const k = removeElement(nums, val);
+
     expect(k).toEqual(5);
-    expect(nums.slice(0, k + 1).sort()).toEqual([0, 1, 3, 0, 4].sort());
+
+    const result = nums.slice(0, k).sort();
+    const expectation = [0, 1, 3, 0, 4].sort();
+
+    expectationPrint(
+      `[ ${result.join(", ")} ]`,
+      `[ ${expectation.join(", ")} ]`
+    );
+
+    expect(result).toEqual(expectation);
   });
 });
