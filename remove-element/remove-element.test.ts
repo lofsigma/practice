@@ -35,4 +35,40 @@ describe("remove-element", () => {
 
     expect(result).toEqual(expectation);
   });
+  test("case 3", () => {
+    let nums = [1];
+    let val = 1;
+
+    const k = removeElement(nums, val);
+
+    expect(k).toEqual(0);
+
+    const result = nums.slice(0, k).sort();
+    const expectation: number[] = [];
+
+    expectationPrint(
+      `[ ${result.join(", ")} ]`,
+      `[ ${expectation.join(", ")} ]`
+    );
+
+    expect(result).toEqual(expectation);
+  });
+  test("case 4", () => {
+    let nums = [2];
+    let val = 3;
+
+    const k = removeElement(nums, val);
+
+    expect(k).toEqual(1);
+
+    const result = nums.slice(0, k).sort();
+    const expectation = [2];
+
+    expectationPrint(
+      `[ ${result.join(", ")} ]`,
+      `[ ${expectation.join(", ")} ]`
+    );
+
+    expect(result).toEqual(expectation);
+  });
 });
