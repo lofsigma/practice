@@ -14,7 +14,7 @@ describe("merge-sorted-array", () => {
   test("case 2", () => {
     let nums1 = [1];
     let m = 1;
-    let nums2 = [];
+    let nums2: number[] = [];
     let n = 0;
     merge(nums1, m, nums2, n);
     expect(nums1).toStrictEqual([1]);
